@@ -2,16 +2,16 @@ import math
 import pulp
 
 def makeCVRP():
-    num_nodes = 32
-    capacity = 100
-    demand = [ 0, 19, 21, 6, 19,\
-               7, 12, 16, 6, 16,\
-               8, 14, 21, 16, 3,\
-               22, 18, 19, 1, 24,\
-               8, 12, 4, 8, 24,\
-               24, 2, 20, 15, 2,\
-               14, 9 ]
-    coordinate = []
+    num_nodes = 32 #自販機の数
+    capacity = 100 #トラックの最大容量
+    demand = [ 0, 19, 21, 6, 19, 
+               7, 12, 16, 6, 16,
+               8, 14, 21, 16, 3,
+               22, 18, 19, 1, 24,
+               8, 12, 4, 8, 24,
+               24, 2, 20, 15, 2,
+               14, 9 ] #各自販機の1日あたりの減り(需要)
+    coordinate = [] #都市の座標
     coordinate.append( ( 82, 76 ) )
     coordinate.append( ( 96, 44 ) )
     coordinate.append( ( 50, 5 )  )
@@ -44,7 +44,7 @@ def makeCVRP():
     coordinate.append( ( 20, 70 ) )
     coordinate.append( ( 85, 60 ) )
     coordinate.append( ( 98, 5 )  )
-    def computeDistance( c1, c2 ):
+    def computeDistance( c1, c2 ): #都市間の距離を計算する関数を定義
         return math.sqrt( pow( c2[0] - c1[0], 2 ) + pow( c2[1] - c1[1], 2 ) )
     distance = [ [ round(computeDistance( c1, c2 )) for c1 in coordinate ] \
                     for c2 in coordinate ]
